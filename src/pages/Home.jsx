@@ -1,21 +1,23 @@
-import React from "react";
-import Typical from "react-typical";
-const Home = () => {
-  return (
-    <div>
-      <div>
-        <h1 className="text-4xl py-20 text-center tracking-wide">
-          Cooking made simple, flavors made{"  "} 
-          <Typical
-            className="text-orange-600"
-            loop={Infinity}
-            wrapper="b"
-            steps={["memorable", 2000, "unforgettable", 2000, "heavenly", 2000]}
-          />
-        </h1>
-      </div>
-    </div>
-  );
-};
+ import React from 'react'
+import Trending from '../component/Trending'
+import Explore from '../component/Explore'
+import Search from '../component/search'
+import RecentReci from '../component/RecentReci'
+import Recently from '../component/Recently'
+ 
+ const Home = () => {
+   return (
+     <div>
+       <Trending/>
+       <Explore/>
+       <Search/>
+       <RecentReci/>
+       <Recently/>
+     </div>
+   )
+ }
+ 
+ export default Home
+ 
 
-export default Home;
+ 
