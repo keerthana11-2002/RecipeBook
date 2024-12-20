@@ -2,9 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { idMeals } from "../api/recipesAPI.js";
 import { Typewriter } from "react-simple-typewriter";
+import { useNavigate } from "react-router-dom";
 
 const Trending = () => {
   const [recipe, setRecipe] = useState([]);
+  const navigate = useNavigate();
 
   const recipeDetails = async () => {
     try {
@@ -14,10 +16,11 @@ const Trending = () => {
 
       const responses = await Promise.all(fetchPromise);
       const mealsData = await Promise.all(
-        responses.map((response) => response.json()) 
+        responses.map((response) => response.json())
       );
       const allMeals = mealsData.map((meal) => meal.meals[0]);
       setRecipe(allMeals);
+      console.log(allMeals);
     } catch (error) {
       console.error("Error fetching recipes:", error);
     }
@@ -27,6 +30,11 @@ const Trending = () => {
     recipeDetails();
   }, []);
 
+  const handleClick = (idMeal, strMeal) => {
+    const mealName = strMeal.toLowerCase().replace(/\s+/g,"")
+    navigate(`/${idMeal}/${mealName}`);
+  };
+
   return (
     <>
       <div>
@@ -34,7 +42,18 @@ const Trending = () => {
           Cooking made simple, flavors made{" "}
           <span style={{ color: "rgb(253, 101, 46)" }}>
             <Typewriter
-              words={["memorable", "unforgettable", "heavenly","timeless","exquisite","delightful","magical","extraordinary","sensational","irresistible"]}
+              words={[
+                "memorable",
+                "unforgettable",
+                "heavenly",
+                "timeless",
+                "exquisite",
+                "delightful",
+                "magical",
+                "extraordinary",
+                "sensational",
+                "irresistible ",
+              ]}
               loop={Infinity}
               cursor
               cursorStyle="|"
@@ -52,7 +71,11 @@ const Trending = () => {
 
       <div className="grid grid-cols-4 gap-12 p-52 -mt-52 cursor-pointer">
         {recipe.map((item) => (
-          <div key={item.idMeal} className="group text-center">
+          <div
+            key={item.idMeal}
+            className="group text-center"
+            onClick={() => handleClick(item.idMeal, item.strMeal)}
+          >
             <img
               src={item.strMealThumb}
               alt={item.strMeal}

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import {idMeals2} from "../api/recipesAPI"
+import { useNavigate } from 'react-router-dom';
 
 const RecentReci = () => {
 
 const [recentReci,setRecentReci] = useState([]);
+const navigate= useNavigate();
 
 const getRecentReci = async () =>{
-    const idMeals = [52805,53064,52900,52962,53018,53014,53065,53078];
+   
 try{
-    const fetchDetails = idMeals.map((id)=>
+    const fetchDetails = idMeals2.map((id)=>
         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
     );
     const responses = await Promise.all(fetchDetails);
@@ -27,21 +30,24 @@ getRecentReci();
 },[])
 
 
-
+const HandleClickImages = (idMeal, strMeal) => {
+  const mealName = strMeal.toLowerCase().replace(/\s+/g, "");
+  navigate(`/${idMeal}/${mealName}`);
+};
 
 
   return (
     <div>
       <h1 className="text-center text-3xl font-black mt-20 mb-8">RECENT RECIPES</h1>
       <div className="grid grid-cols-4 gap-12 p-52 -mt-52 cursor-pointer">
-      {recentReci.map((reci)=>{
+      {recentReci.map((item)=>{
         return(
             <div className="group text-center"
-            key={reci.idMeal}>
-                <img src={reci.strMealThumb} alt={reci.strMeal}
+            key={item.idMeal} onClick={()=>HandleClickImages(item.idMeal,item.strMeal)}>
+                <img src={item.strMealThumb} alt={item.strMeal}
                 className="hover:scale-90 transition-all duration-300"
                 style={{ width: "300px", borderRadius: "8px" }}/>
-                <h1 className="text-xl font-semibold text-center p-1 text-teal-500  group-hover:text-orange-600 transition-colors duration-300">{reci.strMeal}</h1>
+                <h1 className="text-xl font-semibold text-center p-1 text-teal-500  group-hover:text-orange-600 transition-colors duration-300">{item.strMeal}</h1>
             </div>
         )
     })} 

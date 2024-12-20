@@ -1,5 +1,9 @@
 import React from 'react'
 import Bhat from "/img1.png"
+import { Link } from 'react-router-dom'
+import { BsArrowRight } from "react-icons/bs";
+
+
 const Search = () => {
   return (
     <>
@@ -8,7 +12,7 @@ const Search = () => {
       <input className='mt-8 w-[1100px] text-black border border-black p-2'
       src="text" placeholder='search for a recipe + hit enter'/>
     </div>
-    <div className="bg-gray-200 shadow-lg mt-20 flex w-[70%] max-w-[1000px] mx-auto rounded-2xl overflow-hidden ">
+    <div className="bg-gray-100 shadow-lg mt-20 flex w-[70%] max-w-[1000px] mx-auto rounded-2xl overflow-hidden ">
   <img
     src={Bhat}
     alt="Bhat's Kitchen"
@@ -18,12 +22,15 @@ const Search = () => {
     <h1 className="text-2xl font-bold text-gray-800  mb-4 text-center">
       ABOUT BHAT'S KITCHEN
     </h1>
-    <p className="text-gray-600 text-xl leading-relaxed">
+    <p className="text-gray-600 text-xl leading-relaxed ">
       I'm Venkatesh Bhat, author and owner of Bhat's Kitchen. I am a trained
       chef and passionate about good food, cooking for family and friends, and
       creating recipes that form lasting memories from one generation to the
       next.
     </p>
+    <Link to="/about">
+    <p className='text-orange-600 mt-20 ml-96 text-xl flex gap-1 underline-text'>Learn more about me <BsArrowRight className='text-orange-600 mt-1.5 ' /></p>
+    </Link>
   </div>
 </div>
 

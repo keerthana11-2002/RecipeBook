@@ -1,12 +1,17 @@
+ 
 import React from 'react'
 import { useState,useEffect } from 'react';
+import {useNavigate} from 'react-router-dom'
+import {idMeals1} from "../api/recipesAPI"
+
 const Recently = () => {
     const [recently,setRecently] = useState([]);
+    const navigate = useNavigate();
     
     const getRecently = async () =>{
-        const idMeals = [52951,52989,52912,53083,52882,52964,52872,53015,]
+      
 
-        const fetchDetails = idMeals.map((id)=>
+        const fetchDetails = idMeals1.map((id)=>
             fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
         );
         const responses = await Promise.all(fetchDetails);
@@ -20,13 +25,18 @@ const Recently = () => {
     useEffect(()=>{
     getRecently();
     },[])
+
+    const HandleClickImages = (idMeal,strMeal) =>{
+      const mealName = strMeal.toLowerCase().replace(/\s+/g,"")
+    navigate(`/${idMeal}/${mealName}`);
+    }
     
   return (
     <div>
       <h1 className="text-center text-3xl font-black -mt-36 mb-5">RECENTLY UPDATED</h1> 
       <div className="grid grid-cols-4 gap-12 p-52 -mt-52 cursor-pointer">
         {recently.map((item) => (
-          <div key={item.idMeal} className="group text-center">
+          <div key={item.idMeal} className="group text-center" onClick={()=>HandleClickImages(item.idMeal,item.strMeal)}>
             <img
               src={item.strMealThumb}
               alt={item.strMeal}
