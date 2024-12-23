@@ -11,6 +11,8 @@ import {
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
+import CategoryInfo from "./component/categoryInfo";
+import SearchResults from "./component/searchResults";
 
 const Layout = () => {
   return (
@@ -37,7 +39,12 @@ const router = createBrowserRouter([
         element: <RecipeInfo />,
       },
       {
-        path: "/about", 
+        path: "/:strCategory",
+        element: <CategoryInfo />,
+      },
+
+      {
+        path: "/about",
         element: <About />,
       },
       {
@@ -48,10 +55,11 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+
       {
         path: "*",
         element: <div>404 - Page Not Found</div>,
-      }
+      },
     ],
   },
 ]);

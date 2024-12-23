@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import { idMeals } from "../api/recipesAPI.js";
 import { Typewriter } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
+import Shimmer from "./Shimmer.jsx";
 
 const Trending = () => {
   const [recipe, setRecipe] = useState([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   const recipeDetails = async () => {
     try {
@@ -20,7 +22,7 @@ const Trending = () => {
       );
       const allMeals = mealsData.map((meal) => meal.meals[0]);
       setRecipe(allMeals);
-      console.log(allMeals);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching recipes:", error);
     }
@@ -28,17 +30,17 @@ const Trending = () => {
 
   useEffect(() => {
     recipeDetails();
-  }, []);
+  });
 
   const handleClick = (idMeal, strMeal) => {
-    const mealName = strMeal.toLowerCase().replace(/\s+/g,"")
+    const mealName = strMeal.toLowerCase().replace(/\s+/g, "");
     navigate(`/${idMeal}/${mealName}`);
   };
 
   return (
     <>
-      <div>
-        <h1 className="text-4xl py-8 text-center tracking-wide font-bold">
+      <div className="pt-[104px]">
+        <h1 className="text-4xl py-8 text-center tracking-wide font-bold ">
           Cooking made simple, flavors made{" "}
           <span style={{ color: "rgb(253, 101, 46)" }}>
             <Typewriter
@@ -68,26 +70,29 @@ const Trending = () => {
       <h1 className="text-center text-3xl font-black mb-7 mt-2">
         NEW & TRENDING
       </h1>
-
-      <div className="grid grid-cols-4 gap-12 p-52 -mt-52 cursor-pointer">
-        {recipe.map((item) => (
-          <div
-            key={item.idMeal}
-            className="group text-center"
-            onClick={() => handleClick(item.idMeal, item.strMeal)}
-          >
-            <img
-              src={item.strMealThumb}
-              alt={item.strMeal}
-              className="hover:scale-90 transition-all duration-300"
-              style={{ width: "300px", borderRadius: "8px" }}
-            />
-            <h1 className="text-xl font-semibold text-center p-1 text-teal-500  group-hover:text-orange-600 transition-colors duration-300">
-              {item.strMeal}
-            </h1>
-          </div>
-        ))}
-      </div>
+      {loading ? (
+        <Shimmer />
+      ) : (
+        <div className="grid grid-cols-4 gap-12 p-52 -mt-52 cursor-pointer">
+          {recipe.map((item) => (
+            <div
+              key={item.idMeal}
+              className="group text-center"
+              onClick={() => handleClick(item.idMeal, item.strMeal)}
+            >
+              <img
+                src={item.strMealThumb}
+                alt={item.strMeal}
+                className="hover:scale-90 transition-all duration-300"
+                style={{ width: "300px", borderRadius: "8px" }}
+              />
+              <h1 className="text-xl font-semibold text-center p-1 text-teal-500  group-hover:text-orange-600 transition-colors duration-300">
+                {item.strMeal}
+              </h1>
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };

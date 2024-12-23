@@ -38,7 +38,7 @@ body {
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
- 
+
 .underline-text {
   text-decoration: underline;
 }
