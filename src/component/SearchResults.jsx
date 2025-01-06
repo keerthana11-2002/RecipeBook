@@ -28,19 +28,15 @@ const SearchResults = () => {
     setSearch(e.target.value);
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (search) {
-  //     const formattedSearch = search.replace(/\s+/g, "");
-  //     navigate(`/search/${formattedSearch}`);
-  //   }
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-     navigate(`/search/${search}`);
-    
+    if (search) {
+      const formattedSearch = search.replace(/\s+/g, "");
+      navigate(`/search/${formattedSearch}`);
+    }
   };
+
+  
 
   const handleClickImages = (idMeal, strMeal) => {
     const mealName = strMeal.toLowerCase().replace(/\s+/g, "");
