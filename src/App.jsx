@@ -12,7 +12,7 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import CategoryInfo from "./component/categoryInfo";
-import SearchResults from "./component/searchResults";
+import SearchResults from "./component/searchResults.jsx";
 import AddRecipe from "./component/AddRecipe";
 import Newsletter from "./component/Newsletter";
 
