@@ -35,7 +35,7 @@ const Newsletter = () => {
       <h1 className="text-xl text-center  lg:text-4xl tracking-wider font-extrabold text-gray-800 mb-8 pt-24">
         NEWSLETTER
       </h1>
-      <div className="flex lg:ml-1  -mb-[550px] -ml-[180px]">
+      <div className="flex lg:ml-1  -mb-[550px] -ml-[185px]">
         <div
           className="relative bg-cover bg-center text-white ml-52"
           style={{ backgroundImage: `url(${newsletter})`, height: "500px" }}
