@@ -11,7 +11,7 @@ const AddRecipe = () => {
   return (
     <>
       <div className="bg-gray-50 min-h-screen flex items-center justify-center ">
-        <div className=" rounded-lg p-10  max-w-4xl text-center md:-mt-[630px] -mt-44">
+        <div className=" rounded-lg p-10  max-w-4xl text-center md:-mt-[630px] -mt-32 lg:pt-[550px]">
           <h1 className="md:text-2xl text-xl lg:text-4xl font-bold text-orange-500 mb-6">
             Share Your Recipes, Inspire the World!
           </h1>

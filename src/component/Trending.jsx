@@ -66,7 +66,7 @@ const Trending = () => {
         </h1>
       </div>
 
-      <h1 className="text-center text-lg md:text-2xl lg:text-3xl font-black mb-5 mt-3">
+      <h1 className="text-center text-lg md:text-2xl lg:text-3xl font-black  ">
         NEW & TRENDING
       </h1>
 

@@ -28,7 +28,7 @@ const About = () => {
         </h1>
         <form onSubmit={handleSubmit}>
           <input
-            className="-ml-72 lg:ml-20 mt-4 md:hidden block lg:block lg:mt-1 mb-10 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 "
+            className="-ml-[265px] lg:ml-20 mt-4 md:hidden block lg:block lg:mt-1 mb-10 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 "
             type="text"
             placeholder="Search for Recipes"
             onChange={handleChange}

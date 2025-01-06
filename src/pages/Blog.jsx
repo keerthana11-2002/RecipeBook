@@ -128,7 +128,7 @@ const RecipeBookBlog = () => {
       </div>
 
       <div className="flex items-center justify-center bg-gray-100 p-6 rounded-lg shadow-md">
-        <img src={logo1} alt="Bhat's Kitchen" className=" h-16 " />
+        <img src={logo1} alt="Bhat's Kitchen" className=" h-12 " />
         <p className="text-gray-600">
           Crafted with love by <span className="font-bold">Bhat's Kitchen</span>
           . Your journey to amazing flavors starts here.
