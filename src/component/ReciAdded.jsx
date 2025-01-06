@@ -53,9 +53,9 @@ const ReciAdded = () => {
   };
 
   return (
-    <div className="container mb-32 md:-mt-[700px] -mt-36">
+    <div className="container  mb-32 md:-mt-[700px] -mt-36">
       <form
-        className="max-w-xl mx-auto p-8 rounded-lg border"
+        className="max-w-xl mx-auto  lg:mt-[500px] p-8 rounded-lg border"
         onSubmit={handleSubmit}
       >
         <h2 className="md:text-2xl text-xl lg:text-3xl font-bold text-center text-orange-500 mb-8">
