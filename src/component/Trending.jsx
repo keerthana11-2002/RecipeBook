@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { idMeals } from "../api/recipesAPI.js";
 import { Typewriter } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
@@ -7,8 +6,8 @@ import Shimmer from "./Shimmer.jsx";
 
 const Trending = () => {
   const [recipe, setRecipe] = useState([]);
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const recipeDetails = async () => {
     try {
@@ -30,7 +29,7 @@ const Trending = () => {
 
   useEffect(() => {
     recipeDetails();
-  });
+  }, []);
 
   const handleClick = (idMeal, strMeal) => {
     const mealName = strMeal.toLowerCase().replace(/\s+/g, "");
@@ -39,8 +38,8 @@ const Trending = () => {
 
   return (
     <>
-      <div className="pt-[104px]">
-        <h1 className="text-4xl py-8 text-center tracking-wide font-bold ">
+      <div className="pt-20">
+        <h1 className="text-xl p-6 mt-3 lg:mt-14 md:text-3xl md:mt-10 lg:text-4xl font-bold text-center tracking-wide py-4">
           Cooking made simple, flavors made{" "}
           <span style={{ color: "rgb(253, 101, 46)" }}>
             <Typewriter
@@ -54,7 +53,7 @@ const Trending = () => {
                 "magical",
                 "extraordinary",
                 "sensational",
-                "irresistible ",
+                "irresistible",
               ]}
               loop={Infinity}
               cursor
@@ -67,26 +66,26 @@ const Trending = () => {
         </h1>
       </div>
 
-      <h1 className="text-center text-3xl font-black mb-7 mt-2">
+      <h1 className="text-center text-lg md:text-2xl lg:text-3xl font-black mb-5 mt-3">
         NEW & TRENDING
       </h1>
+
       {loading ? (
         <Shimmer />
       ) : (
-        <div className="grid grid-cols-4 gap-12 p-52 -mt-52 cursor-pointer">
+        <div className="grid lg:-mt-10  grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 md:p-10 lg:p-16">
           {recipe.map((item) => (
             <div
               key={item.idMeal}
-              className="group text-center"
+              className="group text-center cursor-pointer"
               onClick={() => handleClick(item.idMeal, item.strMeal)}
             >
               <img
                 src={item.strMealThumb}
                 alt={item.strMeal}
-                className="hover:scale-90 transition-all duration-300"
-                style={{ width: "300px", borderRadius: "8px" }}
+                className="w-full h-40 sm:h-48 md:h-52 lg:h-56 xl:h-64 object-cover rounded-lg shadow-md hover:scale-95 transition-transform duration-300"
               />
-              <h1 className="text-xl font-semibold text-center p-1 text-teal-500  group-hover:text-orange-600 transition-colors duration-300">
+              <h1 className="text-sm md:text-lg lg:text-lg font-semibold mt-2 text-teal-500 group-hover:text-orange-600 transition-colors duration-300">
                 {item.strMeal}
               </h1>
             </div>

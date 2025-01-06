@@ -38,19 +38,19 @@ const RecipeDetails = () => {
     : null;
 
   return (
-    <div className="p-10 pt-[150px] text-center bg-gray-50 min-h-screen">
-      <h1 className="text-4xl font-bold mb-5 text-orange-600">
+    <div className="p-10 pt-[150px] text-center  bg-gray-50 min-h-screen">
+      <h1 className="text-xl md:text-3xl md:mt-1 -mt-10 lg:text-4xl font-bold mb-5 lg:mt-1 text-orange-600">
         {recipeDetails.strMeal}
       </h1>
 
-      <div className="flex justify-evenly flex-wrap items-start">
+      <div className="flex justify-evenly  flex-wrap items-start">
         <img
           src={recipeDetails.strMealThumb}
           alt={recipeDetails.strMeal}
-          className="rounded-lg mb-5 w-[50%] h-[550px] max-w-[1000px] shadow-lg transition-transform hover:scale-105 ml-44 mt-5"
+          className="rounded-lg mb-5 w-full lg:w-[50%] lg:h-[550px] max-w-[1000px] shadow-lg transition-transform hover:scale-105 lg:ml-44 mt-5"
         />
 
-        <div className="bg-gray-200 shadow-lg w-[30%] max-w-72 mx-auto rounded-2xl overflow-hidden mr-44 mt-10">
+        <div className="bg-gray-200 lg:mr-32 lg:block hidden shadow-lg w-[30%] max-w-72 mx-auto rounded-2xl overflow-hidden mr-44 mt-10">
           <img
             src={logo}
             alt="Bhat's Kitchen"
@@ -82,7 +82,7 @@ const RecipeDetails = () => {
         <ol className="text-xl leading-loose text-left list-decimal list-inside">
           {recipeDetails.strInstructions
             .split(".")
-            .filter((instruction) => instruction.trim() !== "") // Ensure no empty instructions
+            .filter((instruction) => instruction.trim() !== "")
             .map((instruction, index) => (
               <li key={index} className="text-gray-700 mb-4">
                 {instruction.trim()}.
@@ -90,15 +90,17 @@ const RecipeDetails = () => {
             ))}
         </ol>
 
-        <div className="flex ml-72 text-lg">
+        <div className="flex lg:ml-72 text-lg md:text-xl">
           <p className="mt-4 text-gray-500">
-            <strong>Category:</strong> {recipeDetails.strCategory}
+            <strong className="md:text-2xl">Category:</strong>{" "}
+            {recipeDetails.strCategory}
           </p>
-          <p className="text-gray-500 ml-64 mt-3">
-            <strong>Cuisine:</strong> {recipeDetails.strArea}
+          <p className="text-gray-500 lg:ml-64 mt-3 md:ml-80">
+            <strong className="md:text-2xl">Cuisine:</strong>{" "}
+            {recipeDetails.strArea}
           </p>
         </div>
-        <div className="text-center text-xl text-blue-700 mt-8 underline">
+        <div className="text-center md:text-2xl text-xl text-blue-700 mt-8 underline">
           {videoId ? (
             <a
               href={`https://www.youtube.com/embed/${videoId}`}
@@ -111,9 +113,9 @@ const RecipeDetails = () => {
             "Sorry! Video is unavailable"
           )}
         </div>
-        <div className="flex justify-between mt-6">
-          <ul className="text-left ml-20">
-            <h3 className="text-xl font-bold text-gray-700 mb-2">
+        <div className="flex justify-between mt-6 gap-10">
+          <ul className="text-left lg:ml-20 ">
+            <h3 className="md:text-2xl text-xl font-bold text-gray-700 mb-2">
               Ingredients:
             </h3>
             {Object.keys(recipeDetails)
@@ -121,17 +123,25 @@ const RecipeDetails = () => {
                 (key) => key.includes("strIngredient") && recipeDetails[key]
               )
               .map((ingredientKey) => (
-                <li key={ingredientKey} className="text-gray-600 text-md">
+                <li
+                  key={ingredientKey}
+                  className="text-gray-600 md:text-lg text-md"
+                >
                   - {recipeDetails[ingredientKey]}
                 </li>
               ))}
           </ul>
           <ul className="text-left mr-20">
-            <h3 className="text-xl font-bold text-gray-700 mb-2">Measures:</h3>
+            <h3 className="text-xl  font-bold text-gray-700 mb-2 md:text-2xl">
+              Measures:
+            </h3>
             {Object.keys(recipeDetails)
               .filter((key) => key.includes("strMeasure") && recipeDetails[key])
               .map((measureKey) => (
-                <li key={measureKey} className="text-gray-600 text-md">
+                <li
+                  key={measureKey}
+                  className="text-gray-600 text-md md:text-lg"
+                >
                   - {recipeDetails[measureKey]}
                 </li>
               ))}

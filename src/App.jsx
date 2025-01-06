@@ -13,6 +13,8 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import CategoryInfo from "./component/categoryInfo";
 import SearchResults from "./component/searchResults";
+import AddRecipe from "./component/AddRecipe";
+import Newsletter from "./component/Newsletter";
 
 const Layout = () => {
   return (
@@ -43,6 +45,7 @@ const router = createBrowserRouter([
         element: <CategoryInfo />,
       },
 
+      { path: "/search/:searchQuery", element: <SearchResults /> },
       {
         path: "/about",
         element: <About />,
@@ -55,7 +58,14 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-
+      {
+        path: "/addRecipe",
+        element: <AddRecipe />,
+      },
+      {
+        path: "/newsletter",
+        element: <Newsletter />,
+      },
       {
         path: "*",
         element: <div>404 - Page Not Found</div>,

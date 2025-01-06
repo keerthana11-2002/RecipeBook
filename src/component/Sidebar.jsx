@@ -1,59 +1,80 @@
-import React from "react";
+import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = ({ search, setSearch }) => {
+  const [searchVal, setSearchVal] = useState("");
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setSearchVal(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchVal) {
+      navigate(`/search/${searchVal}`);
+    }
+  };
+
   return (
     <div
-      className={`fixed top-0 left-0 h-[600px] bg-white transition-transform duration-300 ease-in-out ${
+      className={`fixed top-0 left-0 h-[500px] bg-white transition-transform duration-300 ease-in-out ${
         search ? "translate-x-0" : "-translate-x-full"
-      } w-96 p-4 z-50 border border-gray-300`}
+      } md:w-96  p-4 z-50 border border-gray-300 w-60`}
     >
-      <header className="flex mt-10 ">
-        <Link to="/">
-          <div className="flex -mt-10 gap-x-4">
-            <img src={logo} alt="logo" className="w-48  -ml-10" />
-            <p className="title">Bhat's Kitchen</p>
-          </div>
+      <header className="flex justify-between items-center mt-5">
+        <Link to="/" className="flex items-center gap-x-4">
+          <img src={logo} alt="logo" className="w-40 -ml-10 md:w-48" />
+          <p className="title text-base md:text-2xl">Bhat's Kitchen</p>
         </Link>
-        <div>
-          <RxCross2
-            className="cursor-pointer text-4xl  ml-10 -mt-7"
-            onClick={() => setSearch(false)}
-          />
-        </div>
+        <RxCross2
+          className="cursor-pointer text-3xl md:text-4xl"
+          onClick={() => setSearch(false)}
+        />
       </header>
 
-      <div>
-        <input
-          type="text"
-          placeholder="Search"
-          className="text-xl border border-gray-200 py-2 px-4 mt-10"
-        />
+      <div className="mt-5">
+        <form onSubmit={handleSubmit} className="flex flex-col items-start">
+          <input
+            className="w-full border border-black p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            type="text"
+            placeholder="Search"
+            onChange={handleChange}
+            value={searchVal}
+          />
+        </form>
       </div>
 
-      <div className="mt-7">
-        <Link to="/">
-          <p className="text-orange-600 underline text-xl mb-2 ">Home</p>
+      <nav className="mt-7 flex flex-col space-y-3">
+        <Link to="/" className="text-orange-600 underline text-lg md:text-xl">
+          Home
         </Link>
-
-        <Link to="/about">
-          <p className="text-orange-600 underline text-xl mb-2">About</p>
+        <Link
+          to="/about"
+          className="text-orange-600 underline text-lg md:text-xl"
+        >
+          About
         </Link>
-
-        <Link to="/recipe/:id">
-          <p className="text-orange-600 underline text-xl mb-2">Recipes</p>
+        <Link
+          to="/blog"
+          className="text-orange-600 underline text-lg md:text-xl"
+        >
+          Blog
         </Link>
-
-        <Link to="/blog">
-          <p className="text-orange-600 underline text-xl mb-2">Blog</p>
+        <Link
+          to="/contact"
+          className="text-orange-600 underline text-lg md:text-xl"
+        >
+          Contact
         </Link>
-
-        <Link to="/contact">
-          <p className="text-orange-600 underline text-xl mb-2">Contact</p>
+        <Link to="/addRecipe">
+          <button className="bg-gradient-to-r from-orange-500 to-red-500 w-full p-3 rounded-full hover:scale-105 transition-transform duration-300 shadow-lg text-white text-lg md:text-xl font-semibold hover:shadow-orange-600">
+            RecipeVault
+          </button>
         </Link>
-      </div>
+      </nav>
     </div>
   );
 };

@@ -14,16 +14,49 @@ body {
   font-optical-sizing: auto;
   font-weight: bold;
   font-style: normal;
-  font-size: xx-large;
+  font-size: 2rem;
   color: rgb(253, 101, 46);
-  margin-left: -70px;
+  margin-left: -90px;
   margin-top: 10px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+    margin-left:0;
+    margin-top: 5px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .title {
+    font-size: 1.5rem;
+    margin-left: -60px;
+  }
+}
+
 .logo {
-  width: 240px;
+  width: 300px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .logo {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@media (max-width: 1024px) {
+  .logo {
+    width: 200px;
+    margin-left: 20px;
+  }
+}
+
 @layer base {
   :root {
     --radius: 0.5rem;
@@ -44,7 +77,7 @@ body {
 }
 .video-container {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
 }
