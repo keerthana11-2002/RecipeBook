@@ -28,12 +28,18 @@ const SearchResults = () => {
     setSearch(e.target.value);
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (search) {
+  //     const formattedSearch = search.replace(/\s+/g, "");
+  //     navigate(`/search/${formattedSearch}`);
+  //   }
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (search) {
-      const formattedSearch = search.replace(/\s+/g, "");
-      navigate(`/search/${formattedSearch}`);
-    }
+     navigate(`/search/${search}`);
+    
   };
 
   const handleClickImages = (idMeal, strMeal) => {
