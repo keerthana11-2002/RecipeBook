@@ -39,7 +39,7 @@ const RecipeDetails = () => {
 
   return (
     <div className="p-10 pt-[150px] text-center  bg-gray-50 min-h-screen">
-      <h1 className="text-xl md:text-3xl md:mt-1 -mt-10 lg:text-4xl font-bold mb-5 lg:mt-1 text-orange-600">
+      <h1 className="text-xl md:text-3xl md:mt-1 -mt-10 lg:text-4xl font-bold mb-3 lg:mt-1 text-orange-600">
         {recipeDetails.strMeal}
       </h1>
 

@@ -48,7 +48,7 @@ const SearchResults = () => {
   }, [searchQuery]);
 
   return (
-    <div className="lg:mb-10 pt-32 px-4 sm:px-8 lg:px-20 min-h-screen">
+    <div className="lg:mb-10 pt-28 px-4 sm:px-8 lg:px-20  min-h-screen">
       <h1 className="lg:pt-5 text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-10 tracking-widest">
         SEARCH RESULTS FOR :{" "}
         <span className="text-orange-600">{searchQuery.toUpperCase()}</span>
