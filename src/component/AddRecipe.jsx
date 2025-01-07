@@ -10,13 +10,9 @@ const AddRecipe = () => {
 
   return (
     <>
-      <div className="bg-gray-50 min-h-screen flex items-center justify-center ">
-        <div className=" rounded-lg p-10  max-w-4xl text-center md:-mt-[630px] -mt-28 lg:pt-[550px]">
-          <h1 className="md:text-2xl text-xl lg:text-4xl font-bold text-orange-500 mb-6">
-            Share Your Recipes, Inspire the World!
-          </h1>
-
-          <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+      <div className="bg-gray-50 min-h-[530px] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="rounded-lg p-6 md:p-10 max-w-lg md:max-w-2xl lg:max-w-6xl text-center">
+          <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-6 sm:mb-8 leading-relaxed">
             Turn your kitchen creations into a global sensation! Share your
             unique recipes on our Recipe Book website, inspire others, and join
             a community that celebrates culinary art. Whether it's a family
@@ -26,7 +22,7 @@ const AddRecipe = () => {
 
           <button
             onClick={handleClick}
-            className="bg-orange-500 text-white text-lg px-6 py-3 rounded-full font-semibold shadow-md hover:bg-orange-600 transition duration-300"
+            className="bg-orange-500 text-white text-sm sm:text-base md:text-lg px-4 sm:px-6 py-2 sm:py-3 mb-16  rounded-full font-semibold shadow-md hover:bg-orange-600 transition duration-300"
           >
             {loading ? "Close Recipe Form" : "Add Your Recipe Now"}
           </button>

@@ -53,7 +53,7 @@ const ReciAdded = () => {
   };
 
   return (
-    <div className="container mb-32  md:-mt-[700px] -mt-36 ">
+    <div className="container mb-32  md:-mt-[100px] lg:-mt-44 -mt-36 ">
       <form
         className="max-w-xl mx-auto lg:mt-[50px] p-8 rounded-lg border"
         onSubmit={handleSubmit}

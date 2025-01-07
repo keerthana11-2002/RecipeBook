@@ -14,7 +14,7 @@ const RecipeBookBlog = () => {
     }, 3000);
   };
   return (
-    <div className="pt-14 lg:pt-24 pb-16 px-6 md:px-20 lg:px-40  mb-20">
+    <div className="pt-14 lg:pt-16 pb-16 px-6 md:px-20 lg:px-40  mb-20">
       <h1 className="text-xl md:mt-20 md:text-2xl lg:text-4xl font-extrabold text-center text-gray-800 mb-4 lg:mb-6 mt-12">
         Bhat's Kitchen Recipe Book : A Culinary Journey
       </h1>

@@ -73,7 +73,7 @@ const Trending = () => {
       {loading ? (
         <Shimmer />
       ) : (
-        <div className="grid lg:-mt-10  grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 md:p-10 lg:p-16">
+        <div className="grid lg:-mt-6  grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 md:p-10 lg:p-16 lg:gap-14">
           {recipe.map((item) => (
             <div
               key={item.idMeal}
